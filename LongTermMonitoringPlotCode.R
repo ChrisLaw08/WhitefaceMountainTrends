@@ -139,7 +139,7 @@ PercentByMonthPlot<-ggplot(PercentByMonth%>%
                                    legend.position = "none")
 
 
-ggsave("PercentValidvsMonth.png",PercentByMonthPlot,
+ggsave("FigureS2.png",PercentByMonthPlot,
        width = 12, height = 6)
 
 
@@ -174,7 +174,7 @@ CaFilterPlot<-ggplot(CaMgData)+
 
 CaMgICFilteredPlot<-grid.arrange(CaFilterPlot, MgFilterPlot, ncol = 2)
 
-ggsave(plot =CaMgICFilteredPlot, filename = 'FigureS1.png',width =14, height = 10)
+ggsave(plot =CaMgICFilteredPlot, filename = 'FigureS4.png',width =14, height = 10)
 
 ### Figure S5  Total Ca and Mg vs Cationic Ca and Mg ####
 
@@ -214,7 +214,7 @@ MgPlot<-ggplot(CaMgData)+
 
 CaMgPlot<-grid.arrange(CaPlot, MgPlot, ncol = 2)
 
-ggsave(plot =CaMgPlot, filename = 'FigureS2.png',width =14, height = 10)
+ggsave(plot =CaMgPlot, filename = 'FigureS5.png',width =14, height = 10)
 
 
 
@@ -248,7 +248,7 @@ DissolvedCaCO3<-ggplot(AllCloudData)+
   scale_y_log10()+PaperQuality()+labs(x = 'pH', y =TeX('\\textbf{Dissolved Ca$^{2+}$ or Mg$^{2+}$ ($\\mu$eq L$^{-1}$)}'))+
   scale_color_manual(values = c('CaCO3' = 'blue', 'MgCO3' = 'red'))
 
-ggsave(plot = DissolvedCaCO3, filename = 'FigureS3.png', height = 8, width = 12)
+ggsave(plot = DissolvedCaCO3, filename = 'FigureS6.png', height = 8, width = 12)
 
 
 ### Create Median Trends Separated by Valid and All Data ####
@@ -686,7 +686,7 @@ LWCPlot<-ggplot(AllLWCData2016Filtered)+
                              size = 2)+
   labs(x = TeX("\\textbf{LWC from 1-Minute Resolution Data (g m^{-3})}"), y = TeX("\\textbf{LWC from ALSC 1-Hour Resolution Data (g m^{-3})}"))
 
-ggsave(LWCPlot, filename = 'FigureS5.png', height =8, width = 8)
+ggsave(LWCPlot, filename = 'FigureS7.png', height =8, width = 8)
 
 ## Figure S8 Comparing Valid and Invalid Medians####
 
@@ -782,7 +782,7 @@ ValidInvalidLWC<-ggplot(AllMedians)+
 ValidInvalidAll<-ValidInvalidpH+ValidInvalidCond+ValidInvalidSO4+ValidInvalidNH4+ValidInvalidNO3+ValidInvalidTOC+
   ValidInvalidCA+ValidInvalidK+ValidInvalidLWC&theme(legend.position = "bottom", legend.text = element_text(size = 22))
 ValidInvalidAll<-ValidInvalidAll+plot_layout(guides = "collect")
-ggsave(filename = "FigureS6.png", ValidInvalidAll,height = 10,width = 20)
+ggsave(filename = "FigureS8.png", ValidInvalidAll,height = 10,width = 20)
 
 ## Figure S9  TOC Trends by Month ####
 
@@ -838,7 +838,7 @@ TOCTrends<-ggplot(TOCMonthlyMedians)+
 
 
 
-ggsave('FigureS7.png',TOCTrends, width = 12, height = 7)
+ggsave('FigureS9.png',TOCTrends, width = 12, height = 7)
 
 
 
@@ -925,7 +925,7 @@ TICvsLWCBin<-ggplot(LWCLoadingData)+
 
 
 BinData<-grid.arrange(TICvsLWCBin,TOCvsLWCBin)
-ggsave(plot = BinData, filename = "FigureS8.png", width = 12, height = 16)
+ggsave(plot = BinData, filename = "FigureS10.png", width = 12, height = 16)
 
 
 
@@ -1055,7 +1055,7 @@ PredMeaCondpH<-ggplot(AllCloudData)+
 
 RatioPlot<-grid.arrange(CationAnionpH, PredMeaCondpH)
 
-ggsave("FigureS9png", RatioPlot, width = 8, height = 10)
+ggsave("FigureS11png", RatioPlot, width = 8, height = 10)
 
 
 
@@ -1091,7 +1091,7 @@ HCO3IonBalanceHighpH<-ggplot(subset(AllCloudData, LABPH > 6))+
 IonBalancePlots<-grid.arrange(HCO3IonBalanceAll, HCO3IonBalanceHighpH)
 
 
-ggsave(plot = IonBalancePlots, filename = "FigureS10.png", width = 8, height = 8)
+ggsave(plot = IonBalancePlots, filename = "FigureS12.png", width = 8, height = 8)
 
 
 ## Figure S13 Ion Balance vs TOC ####
@@ -1112,7 +1112,7 @@ TOCBalanceAll<-ggplot(AllCloudData%>%
                           data = AllCloudData)+
   PaperQuality()
 
-ggsave(filename = "FigureS11.png", TOCBalanceAll, width = 8, height = 8)
+ggsave(filename = "FigureS13.png", TOCBalanceAll, width = 8, height = 8)
 ## Figure S14 Ion Balance by pH ####
 
 IonBalancebypH<-ggplot(subset(AllCloudData, !is.na(pHBin) & SO4+NO3 > NH4))+
@@ -1131,7 +1131,7 @@ IonBalancebypH<-ggplot(subset(AllCloudData, !is.na(pHBin) & SO4+NO3 > NH4))+
 
 
 
-ggsave(plot = IonBalancebypH, file = "FigureS13.png", height = 8, width = 12)
+ggsave(plot = IonBalancebypH, file = "FigureS14.png", height = 8, width = 12)
 
 
 ## Figure S15 Fraction of TOC that is Ionic ####
@@ -1208,7 +1208,7 @@ TOCOAPlot<-ggplot(TOCMedians)+
                          100*signif(OASlope$Intercept[OASlope$Analyte=="OA5C"][[1]], digits = 3)), color = "green")
 
 
-ggsave(plot = TOCOAPlot, file = "FigureS12.png", height = 8, width = 12)
+ggsave(plot = TOCOAPlot, file = "FigureS15.png", height = 8, width = 12)
 
 
 
@@ -1417,7 +1417,7 @@ NPPlot<-ggplot(CaKAerosolData)+
 
 AllAerosolPlots<-grid.arrange(CaKAerosolMassPlot,NPPlot)
 
-ggsave(filename = "FigureS14.png", plot = AllAerosolPlots, width = 10, height = 12)
+ggsave(filename = "FigureS16.png", plot = AllAerosolPlots, width = 10, height = 12)
 
 
 
@@ -1572,11 +1572,8 @@ MeasuredNonLinearpHRegime<-ggplot(subset(AllCloudData, Regime == 'Non-Linear' & 
 EstimatedpHPlots<-grid.arrange(PercentNH4SurplusPlot,MeasuredLinearpHRegime, MeasuredNonLinearpHRegime, layout_matrix = rbind(c(1,1),c(2,3)))
 
 
-ggsave(filename = "Figure9.png", plot = EstimatedpHPlots,
+ggsave(filename = "FigureS17.png", plot = EstimatedpHPlots,
        width = 12, height = 12)
-
-
-## Figure 10 Fractional Acidity from Organics ####
 
 
 
@@ -1605,7 +1602,7 @@ LWCSO4PlotMeasured<-ggplot(AllCloudData)+
 
 LWCvsPH<-grid.arrange(LWCSO4PlotInferrred, LWCSO4PlotMeasured)
 
-ggsave("FigureS15.png", plot = LWCvsPH,  width = 8, height = 8)
+ggsave("FigureS18.png", plot = LWCvsPH,  width = 8, height = 8)
 
 ## Figure 10 TOC vs TDpH
 
@@ -1680,7 +1677,7 @@ NO3vsTDpH<-ggplot(AllCloudData)+
 
 TDpHConcentrations<-grid.arrange(NH4vsMeasuredpH, NO3vsMeasuredpH,NH4vsTDpH, NO3vsTDpH, ncol = 2)
 
-ggsave(TDpHConcentrations, file ='FigureS16.png', width = 14, height = 8)
+ggsave(TDpHConcentrations, file ='FigureS19.png', width = 14, height = 8)
 
 
 ## Figure 10 TOC vs Adjusted pH####
@@ -1715,5 +1712,5 @@ TOCvsInferredpH<-ggplot(AllCloudData%>%
 
 AllTOCvspH<-grid.arrange(TOCvsInferredpH, TOCvsBulkpH)
   
-ggsave(plot = AllTOCvspH, filename = 'Figure11.png', width = 12, height =10)
+ggsave(plot = AllTOCvspH, filename = 'Figure10.png', width = 12, height =10)
 
